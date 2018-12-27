@@ -6,20 +6,29 @@
     <meta name="description" content="Aframe-Material">
     <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
     <script src="https://rawgit.com/mayognaise/aframe-mouse-cursor-component/master/dist/aframe-mouse-cursor-component.min.js"></script>
-    <script src="https://cdn.rawgit.com/zcanter/aframe-gradient-sky/master/dist/gradientsky.min.js"></script>
     <script src="dist/aframe-material.js"></script>
     <script type="text/javascript">
+
       AFRAME.ASSETS_PATH = "./assets";
     </script>
+
+     <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/examples/vendor/aframe/build/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"></script>
   </head>
   <body>
-    <a-scene>
+       <a-scene embedded arjs='trackingMethod: best;'>
+            <a-anchor hit-testing-enabled='true'>
+                <a-box position='0 0.5 0' material='opacity: 0.5;'>
+                   <a-button position="0.2 0.8 0" name="stuff" value="Click me" type="raised"></a-button>
+                <a-entity text="value: HELLO"></a-entity>
+            </a-box>
+        </a-anchor>
       <a-entity laser-controls="hand: right"></a-entity>
 
       <a-entity> <a-camera look-controls-enabled wasd-controls-enabled mouse-cursor></a-camera></a-entity>
 
       <!-- BEGIN INPUTS/KEYBOARD -->
-      <a-keyboard physical-keyboard="true"></a-keyboard>
+      <a-keyboard physical-keyboard="false"></a-keyboard>
       <a-input position="-0.7 1 -2.5" placeholder="Username" color="black" width="1"></a-input>
       <a-input position="-0.7 0.8 -2.5" type="password" placeholder="Password" color="black" width="1"></a-input>
       <!-- END INPUTS/KEYBOARD -->
@@ -33,7 +42,7 @@
           <a-radio position="0.2 1.8 0" width="3" name="food" label="Ice cream"></a-radio>
           <a-checkbox position="0.2 1.5 0" width="3" name="stuff" label="I am a checkbox" checked="true"></a-checkbox>
           <a-checkbox position="0.2 1.2 0" width="3" name="stuff" label="And I am another one" checked="true" disabled="true"></a-checkbox>
-          <a-button position="0.2 0.8 0" name="stuff" value="Click me" type="raised"></a-button>
+         
           <a-button position="0.2 0.35 0" width="3" name="stuff" value="You cannot click me" disabled="true"></a-button>
         </a-form>
       </a-rounded>
